@@ -179,12 +179,7 @@ END:VCARD`;
 
                         {/* Secondary Actions */}
                         <div className="space-y-3 mb-8">
-                            <ActionButton 
-                                onClick={handleGoogleWallet} 
-                                icon={<Wallet size={18} />} 
-                                text={T[lang].wallet} 
-                                subtext={T[lang].walletSub}
-                            />
+                         
                             <ActionButton 
                                 onClick={downloadVCard} 
                                 icon={<Download size={18} />} 
