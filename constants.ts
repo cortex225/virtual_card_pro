@@ -11,7 +11,7 @@ export const DATA: AppData = {
     },
     location: "Québec, Canada",
     email: "contact@jldigitalservices.com",
-    website: "https://jlgouaho.vercel.app/fr",
+    website: "https://jlgouaho.com",
     linkedin: "https://linkedin.com/in/jlgouaho/",
     github: "https://github.com/cortex225",
     x: "https://x.com/jlgouaho",
