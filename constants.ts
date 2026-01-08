@@ -9,12 +9,13 @@ export const DATA: AppData = {
         fr: "J'aide les entrepreneurs à vendre plus grâce au web",
         en: "I help entrepreneurs sell more through the web"
     },
-    location: "Granby, Québec",
+    location: "Québec, Canada",
     email: "contact@jldigitalservices.com",
-    website: "https://www.jldigitalservices.com",
-    linkedin: "https://linkedin.com",
-    github: "https://github.com",
-    phone: "+15140000000",
+    website: "https://jlgouaho.vercel.app/fr",
+    linkedin: "https://linkedin.com/in/jlgouaho/",
+    github: "https://github.com/cortex225",
+    x: "https://x.com/jlgouaho",
+    phone: "+14505211098",
     calendly: "https://calendly.com",
     stack: ["Sites Web", "Boutiques en Ligne", "Apps Web & Mobile", "Automatisation", "SEO", "Stratégie Digitale"],
     about: {

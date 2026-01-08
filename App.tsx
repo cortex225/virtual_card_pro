@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
     Mail, Calendar, Globe, Linkedin, Github, Download, 
     Share2, QrCode, X, Languages, Wallet, Lightbulb, 
-    ShoppingBag, Code, TrendingUp, Headphones, Cpu, CheckCircle
+    ShoppingBag, Code, TrendingUp, Headphones, Cpu, CheckCircle,
+    Twitter
 } from 'lucide-react';
 import { DATA, T } from './constants';
 import { ActionButton } from './components/ActionButton';
@@ -203,6 +204,7 @@ END:VCARD`;
                         <div className="pt-6 border-t border-slate-200/50 flex justify-center gap-6">
                             <SocialIcon href={DATA.linkedin} icon={<Linkedin size={22} />} />
                             <SocialIcon href={DATA.github} icon={<Github size={22} />} />
+                            <SocialIcon href={DATA.x} icon={<Twitter size={22} />} />
                             <button 
                                 onClick={() => setShowQR(true)} 
                                 className="text-slate-400 hover:text-indigo-600 transition-colors p-2 hover:scale-110"

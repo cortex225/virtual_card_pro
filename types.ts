@@ -38,6 +38,7 @@ export interface AppData {
   website: string;
   linkedin: string;
   github: string;
+  x: string;
   phone: string;
   calendly: string;
   stack: string[];
