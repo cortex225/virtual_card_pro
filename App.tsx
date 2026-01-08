@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { 
     Mail, Globe, Linkedin, Github, Download, 
     Calendar, Share2, QrCode, X, ChevronDown, 
@@ -15,21 +15,31 @@ const App: React.FC = () => {
     const [showQR, setShowQR] = useState(false);
     const [showServices, setShowServices] = useState(false);
 
+    // Get a clean URL (no query params) for QR code generation to avoid CSP issues with injected params
+    const cleanUrl = useMemo(() => {
+        try {
+            return window.location.origin + window.location.pathname;
+        } catch (e) {
+            return "https://www.jldigitalservices.com";
+        }
+    }, []);
+
     const handleShare = useCallback(async () => {
         if (navigator.share) {
             try {
                 await navigator.share({
                     title: DATA.name,
                     text: `${DATA.title[lang]} - ${DATA.company}`,
-                    url: window.location.href,
+                    url: cleanUrl,
                 });
             } catch (err) {
                 console.error('Share error:', err);
+                setShowQR(true);
             }
         } else {
             setShowQR(true);
         }
-    }, [lang]);
+    }, [lang, cleanUrl]);
 
     const downloadVCard = useCallback(() => {
         const vCardContent = `BEGIN:VCARD
@@ -56,31 +66,26 @@ END:VCARD`;
         URL.revokeObjectURL(url);
     }, [lang]);
 
-    const handleGoogleWallet = useCallback(async () => {
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(window.location.href)}&color=000000&bgcolor=ffffff&format=png&margin=20`;
+    const handleGoogleWallet = useCallback(() => {
+        // Direct link to the image is safer than fetch() which can be blocked by CORS/CSP
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${encodeURIComponent(cleanUrl)}&color=000000&bgcolor=ffffff&format=png&margin=20`;
         
-        try {
-            const response = await fetch(qrUrl);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = "JL-Digital-Wallet-QR.png";
-            document.body.appendChild(link);
-            link.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(link);
-            
-            setTimeout(() => {
-                alert(T[lang].walletAlert);
-            }, 500);
-
-        } catch (error) {
-            console.error('Error downloading QR', error);
-            window.open(qrUrl, '_blank');
-        }
-    }, [lang]);
+        // Use a hidden anchor to trigger download if possible, or just open the image
+        const link = document.createElement('a');
+        link.href = qrUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        // download attribute is often ignored cross-origin for images, so target=_blank is the fallback
+        link.setAttribute("download", "JL-Digital-Card-QR.png");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Show the alert instructions
+        setTimeout(() => {
+            alert(T[lang].walletAlert);
+        }, 500);
+    }, [lang, cleanUrl]);
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center p-4 bg-slate-50 font-sans relative overflow-hidden">
@@ -254,9 +259,13 @@ END:VCARD`;
 
                         <div className="bg-slate-50 p-4 rounded-xl inline-block mb-4 border border-slate-100">
                             <img 
-                                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}&color=1e293b&bgcolor=f8fafc`} 
+                                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(cleanUrl)}&color=1e293b&bgcolor=f8fafc`} 
                                 alt="QR Code" 
                                 className="w-48 h-48 mix-blend-multiply"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                }}
                             />
                         </div>
                         
