@@ -36,28 +36,22 @@ export const T: Record<Language, Translations> = {
         contact: "Me contacter",
         book: "Prendre RDV (Gratuit)",
         save: "Sauvegarder ma fiche",
-        wallet: "Google Portefeuille",
-        walletSub: "Carte de visite numérique",
         portfolio: "Voir mes réalisations",
         services: "Ce que je peux faire pour vous",
         openToWork: "DISPONIBLE POUR VOS PROJETS",
         share: "Partager",
         scan: "Scannez pour garder le contact",
-        close: "Fermer",
-        walletAlert: "QR Code téléchargé !\n\nPour l'ajouter à Google Portefeuille :\n1. Ouvrez l'app Google Wallet\n2. Cliquez sur 'Ajouter au portefeuille'\n3. Choisissez 'Photo' et sélectionnez cette image."
+        close: "Fermer"
     },
     en: {
         contact: "Contact Me",
         book: "Book a Free Call",
         save: "Save Contact",
-        wallet: "Google Wallet",
-        walletSub: "Digital Business Card",
         portfolio: "See my work",
         services: "How I can help you",
         openToWork: "AVAILABLE FOR PROJECTS",
         share: "Share",
         scan: "Scan to keep in touch",
-        close: "Close",
-        walletAlert: "QR Code downloaded!\n\nTo add to Google Wallet:\n1. Open Google Wallet app\n2. Tap 'Add to Wallet'\n3. Choose 'Photo' and select this image."
+        close: "Close"
     }
 };

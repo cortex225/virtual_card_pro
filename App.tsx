@@ -3,7 +3,7 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { 
     Mail, Globe, Linkedin, Github, Download, 
     Calendar, Share2, QrCode, X, ChevronDown, 
-    ChevronUp, Languages, Wallet, Lightbulb 
+    ChevronUp, Languages, Lightbulb 
 } from 'lucide-react';
 import { DATA, T } from './constants';
 import { Language } from './types';
@@ -77,25 +77,6 @@ END:VCARD`;
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }, [lang]);
-
-    const handleGoogleWallet = useCallback(() => {
-        // We avoid fetching and creating blobs to bypass some CSP/CORS issues with external image servers
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${encodeURIComponent(cleanUrl)}&color=000000&bgcolor=ffffff&format=png&margin=20`;
-        
-        // Open in new tab or attempt direct download
-        const link = document.createElement('a');
-        link.href = qrUrl;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.setAttribute("download", "Business_Card_QR.png");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        setTimeout(() => {
-            alert(T[lang].walletAlert);
-        }, 500);
-    }, [lang, cleanUrl]);
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center p-4 bg-slate-50 font-sans relative overflow-hidden">
@@ -210,12 +191,6 @@ END:VCARD`;
 
                     {/* Secondary Action List */}
                     <div className="space-y-3">
-                        <ActionButton 
-                            onClick={handleGoogleWallet} 
-                            icon={<Wallet size={18} />} 
-                            text={T[lang].wallet} 
-                            subtext={T[lang].walletSub}
-                        />
                         <ActionButton 
                             onClick={downloadVCard} 
                             icon={<Download size={18} />} 

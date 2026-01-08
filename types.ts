@@ -26,13 +26,10 @@ export interface Translations {
   contact: string;
   book: string;
   save: string;
-  wallet: string;
-  walletSub: string;
   portfolio: string;
   services: string;
   openToWork: string;
   share: string;
   scan: string;
   close: string;
-  walletAlert: string;
 }
