@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { 
     Mail, Globe, Linkedin, Github, Download, 
     Calendar, Share2, QrCode, X, ChevronDown, 
@@ -15,17 +15,26 @@ const App: React.FC = () => {
     const [showQR, setShowQR] = useState(false);
     const [showServices, setShowServices] = useState(false);
 
-    // Get a clean URL (no query params) for QR code generation to avoid CSP issues with injected params
+    // Defensive URL check: Ensure we are not accidentally executing inside a weird context
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('onload')) {
+            console.warn('Potential external script injection detected via onload parameter. Ignoring.');
+        }
+    }, []);
+
+    // Get a clean URL (strictly origin + pathname)
     const cleanUrl = useMemo(() => {
         try {
-            return window.location.origin + window.location.pathname;
+            const url = new URL(window.location.href);
+            return url.origin + url.pathname;
         } catch (e) {
-            return "https://www.jldigitalservices.com";
+            return "https://virtual-card-pro.vercel.app/";
         }
     }, []);
 
     const handleShare = useCallback(async () => {
-        if (navigator.share) {
+        if (typeof navigator !== 'undefined' && navigator.share) {
             try {
                 await navigator.share({
                     title: DATA.name,
@@ -33,8 +42,11 @@ const App: React.FC = () => {
                     url: cleanUrl,
                 });
             } catch (err) {
-                console.error('Share error:', err);
-                setShowQR(true);
+                // If sharing is cancelled or fails, fallback to QR
+                if ((err as Error).name !== 'AbortError') {
+                    console.error('Share error:', err);
+                    setShowQR(true);
+                }
             }
         } else {
             setShowQR(true);
@@ -59,7 +71,7 @@ END:VCARD`;
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "JL_Digital_Contact.vcf");
+        link.setAttribute("download", `${DATA.name.replace(/\s+/g, '_')}_Contact.vcf`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -67,21 +79,19 @@ END:VCARD`;
     }, [lang]);
 
     const handleGoogleWallet = useCallback(() => {
-        // Direct link to the image is safer than fetch() which can be blocked by CORS/CSP
+        // We avoid fetching and creating blobs to bypass some CSP/CORS issues with external image servers
         const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${encodeURIComponent(cleanUrl)}&color=000000&bgcolor=ffffff&format=png&margin=20`;
         
-        // Use a hidden anchor to trigger download if possible, or just open the image
+        // Open in new tab or attempt direct download
         const link = document.createElement('a');
         link.href = qrUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        // download attribute is often ignored cross-origin for images, so target=_blank is the fallback
-        link.setAttribute("download", "JL-Digital-Card-QR.png");
+        link.setAttribute("download", "Business_Card_QR.png");
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
-        // Show the alert instructions
         setTimeout(() => {
             alert(T[lang].walletAlert);
         }, 500);
@@ -91,7 +101,7 @@ END:VCARD`;
         <div className="min-h-screen w-full flex items-center justify-center p-4 bg-slate-50 font-sans relative overflow-hidden">
             
             {/* Background Animation */}
-            <div className="absolute inset-0 animated-bg z-0"></div>
+            <div className="absolute inset-0 animated-bg z-0 pointer-events-none"></div>
 
             <div className="w-full max-w-[380px] mx-auto z-10 relative">
                 
@@ -100,12 +110,14 @@ END:VCARD`;
                      <button 
                         onClick={() => setLang(l => l === 'fr' ? 'en' : 'fr')}
                         className="bg-white/60 backdrop-blur-md p-2 rounded-full shadow-sm border border-white text-xs font-bold text-slate-600 flex items-center gap-1 hover:bg-white transition-colors"
+                        aria-label="Toggle Language"
                     >
                         <Languages size={14} /> {lang.toUpperCase()}
                     </button>
                     <button 
                         onClick={handleShare}
                         className="bg-white/60 backdrop-blur-md p-2 rounded-full shadow-sm border border-white text-slate-600 hover:text-indigo-600 hover:bg-white transition-colors"
+                        aria-label="Share Contact"
                     >
                         <Share2 size={18} />
                     </button>
@@ -140,7 +152,7 @@ END:VCARD`;
                         <p className="text-slate-500 text-sm font-medium">{DATA.title[lang]}</p>
                     </div>
 
-                    {/* Tech Stack / Keywords Chips */}
+                    {/* Keywords Chips */}
                     <div className="mt-6 mb-6">
                         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide justify-center flex-wrap">
                             {DATA.stack.map((tech, index) => (
@@ -161,7 +173,7 @@ END:VCARD`;
                             <span className="text-sm font-medium">{T[lang].contact}</span>
                         </button>
                         <button 
-                            onClick={() => window.open(DATA.calendly, '_blank')}
+                            onClick={() => window.open(DATA.calendly, '_blank', 'noopener,noreferrer')}
                             className="bg-indigo-600 hover:bg-indigo-500 text-white py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-indigo-600/20"
                         >
                             <Calendar size={18} />
@@ -211,7 +223,7 @@ END:VCARD`;
                             subtext=".vcf"
                         />
                          <ActionButton 
-                            onClick={() => window.open(DATA.website, '_blank')}
+                            onClick={() => window.open(DATA.website, '_blank', 'noopener,noreferrer')}
                             icon={<Globe size={18} />} 
                             text={T[lang].portfolio}
                             subtext="jldigitalservices.com"
@@ -223,12 +235,15 @@ END:VCARD`;
                     <div className="mt-8 pt-6 border-t border-slate-200/50 flex justify-center gap-4">
                         <SocialIcon href={DATA.linkedin} icon={<Linkedin size={20} />} />
                         <SocialIcon href={DATA.github} icon={<Github size={20} />} />
-                        <button onClick={() => setShowQR(true)} className="text-slate-400 hover:text-indigo-600 transition-colors p-2">
+                        <button 
+                            onClick={() => setShowQR(true)} 
+                            className="text-slate-400 hover:text-indigo-600 transition-colors p-2"
+                            aria-label="Show QR Code"
+                        >
                             <QrCode size={20} />
                         </button>
                     </div>
 
-                    {/* Entity Info */}
                     <div className="mt-6 text-center">
                         <div className="inline-flex items-center gap-1 text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded-md">
                             <span>NEQ:</span>
@@ -240,11 +255,12 @@ END:VCARD`;
 
             {/* QR Code Modal Overlay */}
             {showQR && (
-                <div className="absolute inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+                <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
                     <div className="bg-white p-6 rounded-3xl shadow-2xl w-full max-w-xs relative text-center">
                         <button 
                             onClick={() => setShowQR(false)}
                             className="absolute top-4 right-4 text-slate-400 hover:text-slate-800"
+                            aria-label="Close"
                         >
                             <X size={24} />
                         </button>
@@ -262,10 +278,7 @@ END:VCARD`;
                                 src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(cleanUrl)}&color=1e293b&bgcolor=f8fafc`} 
                                 alt="QR Code" 
                                 className="w-48 h-48 mix-blend-multiply"
-                                onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                }}
+                                loading="lazy"
                             />
                         </div>
                         
