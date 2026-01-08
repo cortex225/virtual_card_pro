@@ -4,9 +4,10 @@ export const DATA: AppData = {
     name: "Déto Jean-Luc Gouaho",
     company: "JL Digital Services",
     neq: "2279991246",
-    title: { 
-        fr: "Expert en Solutions Numériques", 
-        en: "Digital Solutions Expert" 
+    avatar: "/img/avatar.png",
+    title: {
+        fr: "J'aide les entrepreneurs à vendre plus grâce au web",
+        en: "I help entrepreneurs sell more through the web"
     },
     location: "Granby, Québec",
     email: "contact@jldigitalservices.com",
@@ -15,128 +16,128 @@ export const DATA: AppData = {
     github: "https://github.com",
     phone: "+15140000000",
     calendly: "https://calendly.com",
-    stack: ["React", "TypeScript", "Node.js", "Next.js", "Tailwind CSS", "Shopify", "Automation", "Mobile Apps"],
+    stack: ["Sites Web", "Boutiques en Ligne", "Apps Web & Mobile", "Automatisation", "SEO", "Stratégie Digitale"],
     about: {
-        fr: "Je transforme vos idées en solutions numériques performantes. Spécialisé dans le développement web moderne et l'automatisation, j'aide les entreprises à accroître leur visibilité, optimiser leurs processus et augmenter leurs revenus. Mon approche est simple : qualité, rapidité et résultats mesurables.",
-        en: "I turn your ideas into high-performance digital solutions. Specializing in modern web development and automation, I help businesses increase their visibility, optimize processes, and boost revenue. My approach is simple: quality, speed, and measurable results."
+        fr: "Pas encore de site ? Un site qui ne vous rapporte rien ? Des heures perdues sur des tâches répétitives ? Je vous aide à exister en ligne et à transformer votre présence web en machine à clients. Site vitrine, boutique en ligne ou application sur mesure — vous obtenez enfin un outil qui travaille pour vous 24/7.",
+        en: "No website yet? A site that brings you nothing? Hours wasted on repetitive tasks? I help you exist online and turn your web presence into a client-generating machine. Showcase site, online store, or custom app — you finally get a tool that works for you 24/7."
     },
     services: {
         fr: [
             {
-                name: "Sites Web & Vitrines Haut de Gamme", 
-                desc: "Ne vous contentez pas d'un simple site. Obtenez une plateforme qui convertit vos visiteurs en clients. Design moderne, chargement ultra-rapide et optimisation SEO incluse.",
-                features: ["Design Responsive", "SEO Optimisé", "Performance Maximale"],
+                name: "Présence en Ligne Qui Convertit",
+                desc: "Votre site doit être votre meilleur vendeur, pas une simple brochure. Je crée des sites professionnels qui rassurent vos visiteurs et les transforment en clients. Visible sur Google, rapide, et pensé pour générer des contacts.",
+                features: ["Trouvable sur Google", "Génère des appels", "Design pro"],
                 icon: "Globe"
             },
             {
-                name: "E-Commerce & Boutiques en Ligne", 
-                desc: "Lancez votre boutique en ligne clé en main. Gestion de catalogue simple, paiements sécurisés et expérience utilisateur fluide pour maximiser vos ventes 24/7.",
-                features: ["Paiements Sécurisés", "Gestion de Stock", "Marketing Intégré"],
+                name: "Boutique en Ligne Clé en Main",
+                desc: "Vendez vos produits pendant que vous dormez. Je configure votre boutique de A à Z : catalogue produits, paiements sécurisés, livraison automatisée. Vous recevez les commandes, je m'occupe du reste technique.",
+                features: ["Ventes 24h/24", "Paiements sécurisés", "Simple à gérer"],
                 icon: "ShoppingBag"
             },
             {
-                name: "Applications & Logiciels Sur Mesure", 
-                desc: "Des outils puissants adaptés à VOTRE réalité. De l'automatisation de tâches aux applications mobiles, je développe ce dont vous avez besoin pour passer au niveau supérieur.",
-                features: ["Automatisation", "Tableaux de Bord", "Apps Mobiles"],
+                name: "Automatisation & Gain de Temps",
+                desc: "Combien d'heures perdez-vous sur des tâches répétitives ? Envoi de factures, relances clients, rapports... J'automatise ce qui vous fait perdre du temps pour que vous puissiez vous concentrer sur votre métier.",
+                features: ["Zéro tâche manuelle", "Moins d'erreurs", "+10h/semaine gagnées"],
                 icon: "Code"
             }
         ],
         en: [
             {
-                name: "High-End Websites & Showcases", 
-                desc: "Don't settle for a basic site. Get a platform that converts visitors into customers. Modern design, ultra-fast loading, and SEO optimization included.",
-                features: ["Responsive Design", "SEO Optimized", "Maximum Performance"],
+                name: "Online Presence That Converts",
+                desc: "Your website should be your best salesperson, not just a brochure. I create professional sites that build trust and turn visitors into customers. Visible on Google, fast, and designed to generate leads.",
+                features: ["Found on Google", "Generates calls", "Pro design"],
                 icon: "Globe"
             },
             {
-                name: "E-Commerce & Online Stores", 
-                desc: "Launch your turnkey online store. Simple catalog management, secure payments, and seamless user experience to maximize your sales 24/7.",
-                features: ["Secure Payments", "Inventory Management", "Integrated Marketing"],
+                name: "Turnkey Online Store",
+                desc: "Sell your products while you sleep. I set up your store from A to Z: product catalog, secure payments, automated shipping. You receive orders, I handle the technical stuff.",
+                features: ["24/7 sales", "Secure payments", "Easy to manage"],
                 icon: "ShoppingBag"
             },
             {
-                name: "Custom Apps & Software", 
-                desc: "Powerful tools tailored to YOUR reality. From task automation to mobile apps, I develop exactly what you need to scale to the next level.",
-                features: ["Automation", "Dashboards", "Mobile Apps"],
+                name: "Automation & Time Savings",
+                desc: "How many hours do you waste on repetitive tasks? Invoicing, client follow-ups, reports... I automate what's eating your time so you can focus on your actual business.",
+                features: ["Zero manual tasks", "Fewer errors", "+10h/week saved"],
                 icon: "Code"
             }
         ]
     },
     whyChooseUs: {
         fr: [
-            { title: "Approche Orientée Résultats", desc: "Chaque ligne de code a un but : faire croître votre business.", icon: "TrendingUp" },
-            { title: "Support Réactif", desc: "Je ne disparais pas après la livraison. Je suis votre partenaire technique.", icon: "Headphones" },
-            { title: "Technologies Modernes", desc: "Utilisation des derniers standards pour garantir sécurité et pérennité.", icon: "Cpu" }
+            { title: "Résultats Garantis", desc: "Pas de jargon technique. Je parle chiffres : plus de visiteurs, plus de clients, plus de ventes.", icon: "TrendingUp" },
+            { title: "Accompagnement Humain", desc: "Vous n'êtes pas livré à vous-même. Je reste disponible, je vous forme, je vous accompagne.", icon: "Headphones" },
+            { title: "Clé en Main", desc: "Vous n'avez rien à faire. Je gère tout de A à Z, vous récoltez les bénéfices.", icon: "Cpu" }
         ],
         en: [
-            { title: "Results-Oriented Approach", desc: "Every line of code has a goal: to grow your business.", icon: "TrendingUp" },
-            { title: "Responsive Support", desc: "I don't disappear after delivery. I am your technical partner.", icon: "Headphones" },
-            { title: "Modern Technologies", desc: "Using the latest standards to ensure security and longevity.", icon: "Cpu" }
+            { title: "Guaranteed Results", desc: "No tech jargon. I speak numbers: more visitors, more customers, more sales.", icon: "TrendingUp" },
+            { title: "Human Support", desc: "You're not left on your own. I stay available, train you, and support you.", icon: "Headphones" },
+            { title: "Turnkey Service", desc: "You don't have to do anything. I handle everything A to Z, you reap the benefits.", icon: "Cpu" }
         ]
     },
     process: {
         fr: [
-            { step: "01", title: "Découverte", desc: "Nous analysons vos besoins et définissons ensemble les objectifs du projet." },
-            { step: "02", title: "Stratégie & Design", desc: "Je conçois une maquette et une architecture adaptées à votre vision." },
-            { step: "03", title: "Développement", desc: "Construction de votre solution avec des points d'étape réguliers." },
-            { step: "04", title: "Lancement & Suivi", desc: "Mise en ligne, formation et accompagnement pour assurer votre succès." }
+            { step: "01", title: "Appel Découverte", desc: "15 min pour comprendre votre business, vos défis et vos objectifs. Sans engagement." },
+            { step: "02", title: "Proposition Sur Mesure", desc: "Je vous présente une solution adaptée à VOS besoins, avec un prix clair et sans surprise." },
+            { step: "03", title: "Création & Validation", desc: "Je construis, vous validez à chaque étape. Aucune mauvaise surprise à la livraison." },
+            { step: "04", title: "Lancement & Croissance", desc: "Votre site est en ligne. Je vous forme et reste disponible pour vous aider à grandir." }
         ],
         en: [
-            { step: "01", title: "Discovery", desc: "We analyze your needs and define the project goals together." },
-            { step: "02", title: "Strategy & Design", desc: "I design a mockup and architecture tailored to your vision." },
-            { step: "03", title: "Development", desc: "Building your solution with regular check-ins." },
-            { step: "04", title: "Launch & Support", desc: "Go-live, training, and ongoing support to ensure your success." }
+            { step: "01", title: "Discovery Call", desc: "15 min to understand your business, challenges, and goals. No commitment." },
+            { step: "02", title: "Custom Proposal", desc: "I present a solution tailored to YOUR needs, with clear pricing and no surprises." },
+            { step: "03", title: "Build & Validate", desc: "I build, you validate at each step. No bad surprises at delivery." },
+            { step: "04", title: "Launch & Growth", desc: "Your site is live. I train you and stay available to help you grow." }
         ]
     },
     testimonials: {
         fr: [
-            { name: "Sophie M.", role: "CEO", company: "Fashion Nova QC", text: "Jean-Luc a transformé notre présence en ligne. Nos ventes ont doublé en 3 mois !" },
-            { name: "Marc D.", role: "Fondateur", company: "TechStart", text: "Professionnel, rapide et à l'écoute. L'outil sur mesure qu'il a créé nous sauve 10h par semaine." }
+            { name: "Sophie M.", role: "Propriétaire", company: "Boutique Mode QC", text: "Avant, mon site ne générait aucun appel. Maintenant je reçois 3-4 demandes par semaine. Jean-Luc a tout changé !" },
+            { name: "Marc D.", role: "Entrepreneur", company: "Services Pro", text: "Je passais 10h par semaine sur la facturation. Maintenant c'est automatique. J'aurais dû le faire avant !" }
         ],
         en: [
-            { name: "Sophie M.", role: "CEO", company: "Fashion Nova QC", text: "Jean-Luc transformed our online presence. Our sales doubled in 3 months!" },
-            { name: "Marc D.", role: "Founder", company: "TechStart", text: "Professional, fast, and attentive. The custom tool he created saves us 10 hours a week." }
+            { name: "Sophie M.", role: "Owner", company: "Fashion Boutique QC", text: "Before, my site generated zero calls. Now I get 3-4 inquiries per week. Jean-Luc changed everything!" },
+            { name: "Marc D.", role: "Entrepreneur", company: "Pro Services", text: "I used to spend 10h a week on invoicing. Now it's automatic. I should have done this sooner!" }
         ]
     }
 };
 
 export const T: Record<Language, Translations> = {
     fr: {
-        contact: "Démarrer un projet",
-        book: "Réserver un audit gratuit",
-        save: "Enregistrer le contact",
-        portfolio: "Explorer mon portfolio",
-        services: "Mes Expertises",
-        openToWork: "DISPONIBLE IMMÉDIATEMENT",
-        share: "Partager la carte",
-        scan: "Scanner pour connecter",
+        contact: "Discutons de votre projet",
+        book: "Appel gratuit de 15 min",
+        save: "Garder mon contact",
+        portfolio: "Voir mes réalisations",
+        services: "Ce que je fais pour vous",
+        openToWork: "DISPONIBLE CETTE SEMAINE",
+        share: "Partager",
+        scan: "Scannez pour me contacter",
         close: "Fermer",
-        about: "À Propos",
-        whyUs: "Pourquoi moi ?",
-        ourProcess: "Mon Processus",
-        testimonials: "Témoignages",
+        about: "Mon approche",
+        whyUs: "Pourquoi travailler avec moi ?",
+        ourProcess: "Comment ça se passe",
+        testimonials: "Ils m'ont fait confiance",
         rights: "Tous droits réservés.",
-        wallet: "Google Portefeuille",
-        walletSub: "Carte de visite numérique",
+        wallet: "Ajouter au téléphone",
+        walletSub: "Toujours à portée de main",
         walletAlert: "QR Code téléchargé !\n\nPour l'ajouter à Google Portefeuille :\n1. Ouvrez l'app Google Wallet\n2. Cliquez sur 'Ajouter au portefeuille'\n3. Choisissez 'Photo' et sélectionnez cette image."
     },
     en: {
-        contact: "Start a Project",
-        book: "Book Free Audit",
-        save: "Save Contact",
-        portfolio: "Explore Portfolio",
-        services: "My Expertise",
-        openToWork: "AVAILABLE IMMEDIATELY",
-        share: "Share Card",
-        scan: "Scan to Connect",
+        contact: "Let's talk about your project",
+        book: "Free 15-min call",
+        save: "Keep my contact",
+        portfolio: "See my work",
+        services: "What I do for you",
+        openToWork: "AVAILABLE THIS WEEK",
+        share: "Share",
+        scan: "Scan to contact me",
         close: "Close",
-        about: "About",
-        whyUs: "Why Me?",
-        ourProcess: "My Process",
-        testimonials: "Testimonials",
+        about: "My approach",
+        whyUs: "Why work with me?",
+        ourProcess: "How it works",
+        testimonials: "They trusted me",
         rights: "All rights reserved.",
-        wallet: "Google Wallet",
-        walletSub: "Digital Business Card",
+        wallet: "Add to phone",
+        walletSub: "Always at hand",
         walletAlert: "QR Code downloaded!\n\nTo add to Google Wallet:\n1. Open Google Wallet app\n2. Tap 'Add to Wallet'\n3. Choose 'Photo' and select this image."
     }
 };

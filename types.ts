@@ -32,6 +32,7 @@ export interface AppData {
   company: string;
   neq: string;
   title: Record<Language, string>;
+  avatar: string;
   location: string;
   email: string;
   website: string;

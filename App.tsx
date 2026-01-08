@@ -134,8 +134,8 @@ END:VCARD`;
                         {/* Identity */}
                         <div className="text-center mb-8">
                             <div className="relative inline-block mb-5">
-                                <div className="w-32 h-32 bg-gradient-to-br from-slate-800 to-indigo-900 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-2xl border-[6px] border-white mx-auto">
-                                    {DATA.name.split(' ').map(n => n[0]).join('').slice(0,2)}
+                                <div className="w-32 h-32 rounded-full shadow-2xl border-[6px] border-white mx-auto overflow-hidden bg-slate-100">
+                                    <img src={DATA.avatar} alt={DATA.name} className="w-full h-full object-cover" />
                                 </div>
                                 <div className="absolute bottom-1 right-1 bg-white p-2 rounded-full shadow-lg">
                                     <Lightbulb size={20} className="text-indigo-600" />
