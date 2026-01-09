@@ -18,6 +18,20 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
+      },
+      publicDir: 'public',
+      build: {
+        rollupOptions: {
+          output: {
+            // Ensure sitemap.xml is copied to dist
+            assetFileNames: (assetInfo) => {
+              if (assetInfo.name === 'sitemap.xml' || assetInfo.name === 'robots.txt') {
+                return '[name][extname]';
+              }
+              return 'assets/[name]-[hash][extname]';
+            }
+          }
+        }
       }
     };
 });

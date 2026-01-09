@@ -1,0 +1,22 @@
+# Apache configuration for SPA with sitemap support
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Serve sitemap.xml and robots.txt directly
+  RewriteCond %{REQUEST_URI} ^/(sitemap\.xml|robots\.txt)$
+  RewriteRule ^ - [L]
+  
+  # Serve other static files if they exist
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Fallback to index.html for SPA routing
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/xml "access plus 1 day"
+  ExpiresByType text/plain "access plus 1 day"
+</IfModule>
