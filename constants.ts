@@ -10,7 +10,7 @@ export const DATA: AppData = {
         en: "I help entrepreneurs sell more through the web"
     },
     location: "Québec, Canada",
-    email: "contact@jldigitalservices.com",
+    email: "jl.gouaho@gmail.com",
     website: "https://jlgouaho.com",
     linkedin: "https://linkedin.com/in/jlgouaho/",
     github: "https://github.com/cortex225",

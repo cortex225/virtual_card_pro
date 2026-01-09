@@ -190,7 +190,7 @@ END:VCARD`;
                                 onClick={() => window.open(DATA.website, '_blank', 'noopener,noreferrer')}
                                 icon={<Globe size={18} />} 
                                 text={T[lang].portfolio}
-                                subtext="jldigitalservices.com"
+                                subtext={DATA.website}
                                 highlight
                             />
                         </div>
