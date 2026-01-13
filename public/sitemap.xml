@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Homepage -->
+
+  <!-- Homepage - French (Default) -->
   <url>
     <loc>https://buisiness.jlgouaho.com/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://buisiness.jlgouaho.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://buisiness.jlgouaho.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://buisiness.jlgouaho.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://buisiness.jlgouaho.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://buisiness.jlgouaho.com/"/>
+    <lastmod>2025-01-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://buisiness.jlgouaho.com/img/avatar.png</image:loc>
-      <image:title>Déto Jean-Luc Gouaho - JL Digital Services</image:title>
-      <image:caption>Portrait professionnel de Déto Jean-Luc Gouaho</image:caption>
+      <image:title>Déto Jean-Luc Gouaho - Développeur Web Freelance Granby, Québec</image:title>
+      <image:caption>JL Digital Services - Création de sites web, boutiques en ligne et automatisation à Granby, Estrie, Québec, Canada</image:caption>
+      <image:geo_location>Granby, Quebec, Canada</image:geo_location>
     </image:image>
   </url>
-  
+
+  <!-- Homepage - English Version -->
+  <url>
+    <loc>https://buisiness.jlgouaho.com/?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://buisiness.jlgouaho.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://buisiness.jlgouaho.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://buisiness.jlgouaho.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://buisiness.jlgouaho.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://buisiness.jlgouaho.com/"/>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://buisiness.jlgouaho.com/img/avatar.png</image:loc>
+      <image:title>Déto Jean-Luc Gouaho - Freelance Web Developer Granby, Quebec</image:title>
+      <image:caption>JL Digital Services - Website creation, e-commerce and automation in Granby, Quebec, Canada</image:caption>
+      <image:geo_location>Granby, Quebec, Canada</image:geo_location>
+    </image:image>
+  </url>
+
 </urlset>
